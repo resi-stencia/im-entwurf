@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ title }}</title>
+
+<style>
+/* Die ursprüngliche Hintergrundfarbe und Typo für die gesamte Seite */
+body {
+font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+background-color: #FFF6F0; /* Deine Original-Hintergrundfarbe */
+color: #333;
+max-width: 800px;
+margin: 0 auto;
+padding: 20px;
+line-height: 1.6;
+}
+
+/* Einheitliche Schrift für alle Textelemente */
+p, span, div, article, small, a {
+font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+}
+
+.site-logo {
+max-width: 200px;
+height: auto;
+display: block;
+margin-bottom: 20px;
+}
+
+.main-nav {
+margin-bottom: 20px;
+font-size: 1.1em;
+}
+
+.main-nav a {
+color: #111;
+text-decoration: none;
+font-weight: bold;
+}
+
+.main-nav a:hover {
+text-decoration: underline;
+}
+
+h1, h2, h3, h4 {
+font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+color: #111;
+font-weight: bold;
+margin-top: 1.5em;
+margin-bottom: 0.5em;
+}
+
+h1 { font-size: 2.2em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.3em; }
+</style>
+</head>
+<body>
+
+<!-- Das Logo, das auf JEDER Seite oben stehen soll -->
+<header>
+<img src="/img/logo.png" alt="Logo" class="site-logo">
+</header>
+
+<!-- Die Navigation -->
+<nav class="main-nav">
+<a href="/">Home</a> |
+<a href="/blog/">Blog</a>
+</nav>
+<hr>
+
+<!-- Hier wird der Inhalt der einzelnen Seiten reingeladen -->
+<div class="content-wrapper">
+{{ content | safe }}
+</div>
+
+</body>
+</html>

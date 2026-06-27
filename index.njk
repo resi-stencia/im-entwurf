@@ -1,0 +1,102 @@
+<!-- 1. DIE HÜLLE (Hintergrund und Schriftart direkt erzwungen) -->
+<div style="font-family: 'Courier New', Courier, monospace; background-color: #FFF6F0; min-height: 100vh; margin: -20px; padding: 20px; color: #333;">
+
+    <div style="max-width: 800px; margin: 0 auto;">
+       
+        <!-- 2. DAS LOGO -->
+        <header>
+            <img src="/img/logo.png" alt="Logo" style="max-width: 200px; height: auto; display: block; margin-bottom: 20px;">
+        </header>
+
+        <!-- 3. DIE NAVIGATION -->
+        <nav style="margin-bottom: 20px; font-size: 1.1em; font-weight: bold;">
+            <a href="/" style="color: #111; text-decoration: none;">Home</a> |
+            <a href="/blog/" style="color: #111; text-decoration: none;">Blog</a>
+        </nav>
+        <hr style="border: 0; border-top: 1px solid #ccc; margin-bottom: 30px;">
+
+        <!-- 4. DEIN ZWEISPALTIGES LAYOUT -->
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 40px;">
+
+            <!-- LINKE SPALTE: About Me -->
+            <div>
+                <h1 style="margin-top: 0; color: #111; font-weight: bold;">Willkommen im Durcheinander!</h1>
+               
+                <p>
+                    Neue Sachen ausprobieren, sich in Themen einarbeiten, etwas Neues lernen, aber alles ohne es zu Ende zu bringen oder dran zu bleiben – darin bin ich super. Vielleicht starte ich oft mit neuen Dingen, in der Hoffnung, dann endlich mal die Passion oder das Hobby zu finden. Aber muss man das überhaupt? Ist es nicht auch okay, und vielleicht sogar ein Skill und/oder Hobby, viele Dinge auszuprobieren und sich für vieles begeistern zu können? Muss es immer 100 % werden?
+                </p>
+
+                <p>
+                    Manchmal finde ich es dann aber doch schade, wenn Überlegungen, Projekte oder Ideen nach kurzer Zeit in der Versenkung verschwinden. Es könnte ja sein, dass sich eine andere Person dadurch inspiriert fühlt oder dass ich nach einiger Zeit doch weitermachen möchte.
+                </p>
+
+                <h3 style="color: #111; font-weight: bold;">Eine weitere tolle Idee</h3>
+
+                <p>
+                    So entstand eine weitere <strong>tolle Idee:</strong> dieser Blog. Eine Sammlung meiner Ideen, eine Sammlung meiner Entwürfe und auch eine Sammlung meiner Gedanken.
+                </p>
+
+                <p>
+                    Wir werden sehen, wie lange es dauert, bis dieser Blog ungepflegt und ungeachtet wieder in den Weiten des Internets verschwindet. Aber einen Versuch ist es wert. Denn es ist wie immer: Die Idee ist gut …
+                </p>
+            </div>
+
+    <!-- RECHTE SPALTE: Neueste Einträge & Retro-Tweets -->
+    <div style="border-left: 1px dashed #ccc; padding-left: 20px;">
+       
+        <!-- Die normalen Beiträge (bereits vorhanden) -->
+        <h2 style="margin-top: 0; border-bottom: 2px solid #111; padding-bottom: 5px;">
+            Neueste Einträge
+        </h2>
+       
+        <div style="margin-top: 20px;">
+            {%- for post in collections.posts | reverse -%}
+                {%- if loop.index0 < 3 -%}
+                    <article style="margin-bottom: 20px;">
+                        <small style="color: #777; display: block; font-size: 0.85em;">
+                            [{{ post.date.toISOString().split('T')[0] }}]
+                        </small>
+                        <a href="{{ post.url }}" style="text-decoration: none; font-weight: bold; color: #111;">
+                            ➔ {{ post.data.title }}
+                        </a>
+                    </article>
+                {%- endif -%}
+            {%- else -%}
+                <p style="color: #777; font-style: italic; font-size: 0.9em;">Noch keine Einträge im Logbuch.</p>
+            {%- endfor -%}
+        </div>
+
+        <p style="margin-top: 30px; font-size: 0.9em; margin-bottom: 50px;">
+            👉 <a href="/blog/" style="font-weight: bold; color: #111;">Alle Einträge...</a>
+        </p>
+
+     <!-- ================================================== -->
+        <!-- RETRO-TWITTER-WIDGET (FEED)                        -->
+        <!-- ================================================== -->
+        <h2 style="border-bottom: 2px solid #111; padding-bottom: 5px; color: #111 !important; font-family: 'Courier New', Courier, monospace;">
+            Feed (140)
+        </h2>
+
+        <!-- DIESE BOX HAT JETZT DEN SCROLLBALKEN (max-height begrenzt die Höhe) -->
+        <div style="margin-top: 20px; max-height: 350px; overflow-y: auto; padding-right: 10px;">
+            {%- for tweet in collections.feed | reverse -%}
+                    <div style="background-color: #FFF6F0; border: 1px solid #3787FF; padding: 15px; margin-bottom: 15px; border-radius: 4px;">
+                        <!-- Verfasserzeile -->
+                        <small style="color: #3787FF; font-weight: bold; display: block; margin-bottom: 5px; font-family: 'Courier New', Courier, monospace;">
+                            @resi_stencia • {{ tweet.date.toISOString().split('T')[0] }}
+                        </small>
+                        <!-- Text -->
+                        <p style="margin: 0; font-size: 0.95em; line-height: 1.4; color: #222; font-family: 'Courier New', Courier, monospace;">
+                            {{ tweet.content | safe }}
+                        </p>
+                    </div>
+            {%- else -%}
+                <p style="color: #777; font-style: italic; font-size: 0.9em; font-family: 'Courier New', Courier, monospace;">Der Äther ist gerade still.</p>
+            {%- endfor -%}
+        </div>
+
+
+        </div> <!-- Ende Spalten -->
+
+    </div> <!-- Ende Max-Width -->
+</div> <!-- Ende Hülle -->
